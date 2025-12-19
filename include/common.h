@@ -41,7 +41,23 @@ typedef struct __attribute__((packed)) {
 } ServerResponse;
 
 // ==========================================
-// 4. 函數原型宣告 (Prototypes)
+// 4. Logger 定義
+// ==========================================
+typedef enum {
+    LOG_INFO,
+    LOG_ERROR,
+    LOG_DEBUG
+} LogLevel;
+
+// 初始化 Logger (可選擇輸出到檔案或 stdout)
+void init_logger(const char *filename);
+
+// 寫入 Log
+void log_message(LogLevel level, const char *format, ...);
+
+
+// ==========================================
+// 5. 函數原型宣告 (Prototypes)
 // ==========================================
 // 這些函數實作在 src_lib/protocol.c 中
 
