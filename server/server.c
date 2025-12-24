@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -145,6 +146,9 @@ int main() {
         } else if (pid == 0) {
             // Child process
             close(server_fd); // Child doesn't need the listening socket
+
+            // Seed the random number generator
+            srand(time(NULL) ^ getpid());
 
             // Set Timeout (10 seconds)
             struct timeval tv;
